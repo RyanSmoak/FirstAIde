@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+header {
+  font-family: "Press Start 2P", cursive;
+  color: black;
+  margin-top: 1rem;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20pxrgb(232, 152, 213), 0 0 30px rgb(232, 152, 213),
+    0 0 40px rgb(232, 152, 213), 0 0 55px rgb(232, 152, 213)3, 0 0 70px rgb(232, 152, 213);
+
+}
+header a {
+  color: #370319;
+}
+/*---CARD TRANSFORM----*/
+
+:root {
+  --level-one: translateZ(3rem);
+  --level-two: translateZ(6rem);
+  --level-three: translateZ(9rem);
+
+  --fw-normal: 400;
+  --fw-bold: 700;
+
+  --clr: #ecb3e1;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Oswald", sans-serif;
+  background-image: url(../images/download\ \(1\).jpg);
+  background-size: cover;
+  background-position: center center;
+  padding-bottom: 100px;
+}
+
+.card {
+  width: 400px;
+  margin-right: 50%;
+  margin-top: 3rem;
+}
+
+.card__content {
+  text-align: center;
+  position: relative;
+  padding: 15em 5em;
+  transition: transform 1.5s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card__content {
+  transform: rotateY(0.5turn);
+}
+
+.card__front,
+.card__back {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5em 3em;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  display: grid;
+  align-content: center;
+}
+
+.card__front {
+  background-image: url(../images/voice\ chat.jpg);
+  background-position: center center;
+  background-blend-mode: overlay;
+  color: rgb(11, 11, 10);
+}
+
+.card__front::before {
+  content: "";
+  position: absolute;
+  --spacer: 1em;
+  top: var(--spacer);
+  bottom: var(--spacer);
+  left: var(--spacer);
+  right: var(--spacer);
+  transform: var(--level-one);
+}
+
+.card__title {
+  font-size: 3.5rem;
+  transform: var(--level-three);
+  order: 2;
+  text-transform: uppercase;
+}
+
+.card__subtitle {
+  transform: var(--level-two);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  opacity: 0.7;
+}
+
+.card__body {
+  transform: var(--level-two);
+  font-weight: var(fw-normal);
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.card__back {
+  transform: rotateY(0.5turn);
+  color: rgb(182, 80, 117);
+  background: #070707; 
+}
+
+/*-----GRID LAYOUT---*/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(12);
+  grid-gap: 10px;
+}
+
+/*--RESPONSIVE RULES---*/
+@media screen and (max-width: 1250px){
+.grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 5rem;
+}
+}
+
+@media screen and (max-width: 900px){
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 5rem;
+  }
+  }
+  
+
+/*------CARD 2----*/
+
+.card2__front {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5em 3em;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  display: grid;
+  align-content: center;
+}
+.card2__front {
+  background-image: url(../images/textchat.jpg);
+  background-size: cover;
+  background-position: center center;
+  text-align: center;
+  background-blend-mode: overlay;
+}
+.card2__front::before {
+  content: "";
+  position: absolute;
+  --spacer: 1em;
+  top: var(--spacer);
+  bottom: var(--spacer);
+  left: var(--spacer);
+  right: var(--spacer);
+  transform: var(--level-one);
+}
+/*-----CARD 3----*/
+
+.card3__front {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5em 3em;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  display: grid;
+  align-content: center;
+}
+.card3__front {
+  background-image: url(../images/visual.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: overlay;
+  color: rgb(23, 23, 22);
+}
+.card3__front::before {
+  content: "";
+  position: absolute;
+  --spacer: 1em;
+  top: var(--spacer);
+  bottom: var(--spacer);
+  left: var(--spacer);
+  right: var(--spacer);
+  transform: var(--level-one);
+}
+
+
+.button {
+  padding: 10px;
+  width: 30%;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  background-color: rgb(194, 120, 160);
+  margin-left: 5px;
+}
+
+/*SIDEBAR NAV*/
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #e46d8d;
+  display: block;
+  transition: 0.3s;
+}
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left 0.5s;
+  padding: 20px;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+.bars {
+  margin-right: 95%;
+  color: white;
+  font-size: 30px;
+}
+/*SIDEBAR AREA ENDS*/

@@ -1,0 +1,91 @@
+const responseDiv = document.getElementById('response');
+const accessKey = 'qO8GvvphJF90CIbB4yDHwvssnxMXzwl/L0Nu70z7vZN+VtXJb8ARjA==';  // Replace with your actual Picovoice Access Key
+
+async function startWakeWordDetection() {
+    const { PorcupineWorkerFactory, WebVoiceProcessor } = porcupine;
+    const porcupineWorker = await PorcupineWorkerFactory.create(
+        {
+            accessKey: accessKey,
+            keywords: [{ public_path: "hey_lisp.ppn", custom: true }],
+        },
+        (keyword) => {
+            if (keyword === 'hey_lisp') {
+                startVoiceRecognition();
+            }
+        }
+    );
+
+    const webVoiceProcessor = await WebVoiceProcessor.create({
+        engines: [porcupineWorker],
+    });
+
+    await webVoiceProcessor.start();
+}
+
+function startVoiceRecognition() {
+    eel.start_voice_recognition()(function(command) {
+        responseDiv.innerText = "Response: " + command;
+    });
+}
+
+startWakeWordDetection();
+
+
+<script>
+    const responseDiv = document.getElementById('response');
+
+    const accessKey = 'qO8GvvphJF90CIbB4yDHwvssnxMXzwl/L0Nu70z7vZN+VtXJb8ARjA==';  // Replace with your actual Picovoice Access Key
+
+    async function startWakeWordDetection() {
+        const { PorcupineWorkerFactory, WebVoiceProcessor } = porcupine;
+        const porcupineWorker = await PorcupineWorkerFactory.create(
+            {
+                accessKey: accessKey,
+                keywordIDs: [
+                    {
+                        id: 'hey_lisp',
+                        label: 'Hey Lisp',
+                    },
+                ],
+            },
+            (keyword) => {
+                if (keyword === 'hey_lisp') {
+                    startVoiceRecognition();
+                }
+            }
+        );
+
+        const webVoiceProcessor = await WebVoiceProcessor.create({
+            engines: [porcupineWorker],
+        });
+
+        await webVoiceProcessor.start();
+    }
+
+    function startVoiceRecognition() {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+        recognition.start();
+
+        recognition.onresult = (event) => {
+            const voiceCommand = event.results[0][0].transcript;
+            fetch('http://localhost:5000/process_voice_command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ command: voiceCommand })
+            })
+            .then(response => response.json())
+            .then(data => {
+                responseDiv.innerText = "Response: " + data.response;
+            });
+        };
+    }
+
+    startWakeWordDetection();
+
+
+</script>
+   
+

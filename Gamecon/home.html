@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <title>Cards</title>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <!--NAVIGATION-->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <a href="index.html">HOME</a>
+      <a href="http://127.0.0.1:8000/">VOICE CHAT AI</a>
+      <a href="http://127.0.0.1:5000/">TEXT CHAT AI</a>
+      <a href="groups.html">VISUAL AI</a>
+      <a href="about.html">ABOUT US</a>
+    </div>
+    <div class="bars">
+      <span onclick="openNav()">
+        <i class="fa fa-bars" class="checkbtn"></i
+      ></span>
+    </div>
+    <div id="main"></div>
+    <!--NAVIGATION AREA ENDS-->
+    <header>
+      <a href="index.html"><h1>FIRST (AI)DE</h1></a>
+    </header>
+    <div class="grid">
+      <div class="card">
+        <div class="card__content">
+          <div class="card__front">
+            <h3 class="card__title"></h3>
+            <p class="card__subtitle"></p>
+          </div>
+
+          <div class="card__back">
+            <a href="http://127.0.0.1:8000/">
+              <button class="button">USE</button>
+            </a>
+            <p class="card__body">
+              USE VOICE GUIDANCE FOR YOUR FIRST AID NEEDS (IF THE DEGREE OF BURN IS KNOWN AND THE USER HAS ADEQUATE FIRST AID KNOWLEDGE)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__content">
+          <div class="card2__front">
+            <h3 class="card__title"></h3>
+            <p class="card__subtitle"></p>
+          </div>
+
+          <div class="card__back">
+            <a href="http://127.0.0.1:5000">
+              <button class="button">USE</button>
+            </a>
+            <p class="card__body">
+              USE TEXT BASED GUIDANCE FOR YOUR FIRST AID NEEDS(BEST FOR PEOPLE WHO NEED MATERIAL FOR REFRENCE)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__content">
+          <div class="card3__front">
+            <h3 class="card__title"></h3>
+            <p class="card__subtitle"></p>
+          </div>
+
+          <div class="card__back">
+            <a href="groups.html">
+              <button class="button">USE</button>
+            </a>
+            <p class="card__body">
+              BEST FOR PEOPLE WHO HAVE NO FIRST HAND KNOWLEDGE OF BURN CARE
+               AND NEED MORE HELP IN DETERMINING THE ADEQUATE METHODS OF AID
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="js/home.js"></script>
+</html>
